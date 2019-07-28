@@ -98,6 +98,14 @@
 										<xsl:apply-templates select="current-group()" />
 									</div>
 								</xsl:for-each-group>
+								<xsl:for-each-group select="following-sibling::w:p[wt:is(., 'VortragTOP')]"
+									group-starting-with="w:p[wt:is(., 'VortragTOPAbsatz1')]">
+									<div type="top vortrag">
+										<supplied>
+											<xsl:apply-templates select="current-group()" />
+										</supplied>
+									</div>
+								</xsl:for-each-group>
 							</div>
 						</body>
 					</text>
@@ -149,6 +157,36 @@
 		<p>
 			<xsl:apply-templates />
 		</p>
+	</xsl:template>
+	
+	<xsl:template match="w:p[wt:is(., 'ProtokollTOPAufzhlung')]">
+		<list>
+			<item>
+				<xsl:apply-templates/>
+			</item>
+		</list>
+	</xsl:template>
+	
+	<xsl:template match="w:p[wt:is(., 'VortragTOPAufzhlung')]">
+		<supplied>
+			<list>
+				<item>
+					<xsl:apply-templates/>
+				</item>
+			</list>
+		</supplied>
+	</xsl:template>
+	
+	<xsl:template match="w:p[wt:is(., 'ProtokollDatumUnterschrift')]">
+		<signed role="protocollant">
+			<xsl:apply-templates/>
+		</signed>
+	</xsl:template>
+	
+	<xsl:template match="w:p[wt:is(., 'ProtokollAh.E.')]">
+		<signed role="emperorsapproval">
+			<xsl:apply-templates/>
+		</signed>
 	</xsl:template>
 	<!-- END w:p -->
 	
@@ -242,6 +280,16 @@
 			/>
 		</note>
 	</xsl:template>
+	
+	<xsl:template match="w:r[wt:is(., 'EditorischerEingriff')]">
+		<supplied>
+			<xsl:apply-templates/>
+		</supplied>
+	</xsl:template>
+	
+	<!-- XXX todo: Eingriff über mehrere Wörter XXX -->
+		
+	
 	<!-- END w:r -->
 	
 	<!-- neu 2016-07-31 DK -->

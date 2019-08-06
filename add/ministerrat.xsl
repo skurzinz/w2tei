@@ -178,14 +178,14 @@
 	</xsl:template>
 	
 	<xsl:template match="w:p[wt:is(., 'ProtokollDatumUnterschrift')]">
-		<signed role="protocollant">
+		<dateline>
 			<xsl:apply-templates/>
-		</signed>
+		</dateline>
 	</xsl:template>
 	
-	<xsl:template match="w:p[wt:is(., 'ProtokollAh.E.')]">
+	<xsl:template match="w:p[wt:is(., 'ProtokollAhE')]">
 		<signed role="emperorsapproval">
-			<xsl:apply-templates/>
+			<xsl:apply-templates />
 		</signed>
 	</xsl:template>
 	<!-- END w:p -->

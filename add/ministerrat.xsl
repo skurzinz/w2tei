@@ -30,6 +30,20 @@
 	
 	<xsl:template match="w:document">
 		<teiCorpus xmlns="http://www.tei-c.org/ns/1.0">
+			<teiHeader>
+				<fileDesc>
+					<titleStmt>
+						<title>Ministerratsprotokolle Serie 3 Band 1: 1867</title>
+						<editor>Stefan Malfèr</editor>
+					</titleStmt>
+					<publicationStmt>
+						<p>generated from .docx sources using w2tei and xsl</p>
+					</publicationStmt>
+					<sourceDesc>
+						<p>Digital representation of the printed volumes available in docx files under in mp-data/001-src/</p>
+					</sourceDesc>
+				</fileDesc>
+			</teiHeader>
 			<xsl:for-each-group select="w:body/w:p" group-starting-with="w:p[wt:is(., 'berschriftSitzungMRP', 'p')]">
 				<TEI>
 					<teiHeader>
